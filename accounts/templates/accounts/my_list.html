@@ -1,0 +1,44 @@
+{% extends "date_rls/base.html" %}
+{% load  staticfiles %}
+{% block content %}
+
+
+		{% for movie in movie_list %}
+    <div class="box">
+      <div class="">
+
+        <h5><a href="{% url 'remove_movie' pk=movie.id %}">remove this movie </a> </h5>
+
+      </div>
+      <a href="https://youtu.be/s6zR2T9vn2c" class="image fit"><img src="{{movie.poster.url}}" style=" height: 500px;" alt="" /></a>
+      <div class="{{movie.name}}" style="font-size: 22px;"> </div>
+      <script type="text/javascript">
+      $('.{{movie.name}}').countdown('{{movie.date.year}}/{{movie.date.month}}/{{movie.date.day}}', function(event) {
+        var $this = $(this).html(event.strftime(''
+          + '<span>%m</span>&ensp;&ensp;&ensp;&ensp;'
+          + '<span>%n</span>&ensp;&ensp;&ensp;&ensp;'
+          + '<span>%H</span>&ensp;&ensp;&ensp;&ensp;'
+          + '<span>%M</span>&ensp;&ensp;&ensp;&ensp;'
+          + '<span>%S</span>'));
+            });
+      </script>
+      <div class="">
+      &ensp;&ensp;  Month&ensp;&ensp;&ensp;&ensp;Day&ensp;&ensp;&ensp;&ensp;&ensp; Hour&ensp;&ensp;&ensp;&ensp; Minute&ensp;&ensp;&ensp; Second
+      </div>
+
+    </div>
+
+
+    {% endfor %}
+
+  </div>
+
+
+
+
+	</section>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "date_rls/base.html" %}
+
+{% block content %}
+<h2 class="text-center">Welcome to my website</h2>
+<h3 class="text-center">You can register and add movies to your watchlist</h3>
+  <section id="pattern" class="pattern">
+  	<ul class="grid">
+		{% for movie in movie_list  %}
+    <li>
+      <div>
+        <h3>{{movie.name}}</h3>
+        <h4>{{movie.genre}}</h4>
+        <h4>{{movie.date}}</h4>
+        <h5>{{movie.url}}</h5>
+        <h5><a href="{% url 'remove_movie' pk=movie.id %}">remove this movie </a> </h5>
+      </div>
+    </li>
+
+    {% endfor %}
+
+		</ul>
+	</section>
+{% endblock %}

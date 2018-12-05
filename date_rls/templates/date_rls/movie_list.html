@@ -1,0 +1,51 @@
+{% extends "date_rls/base.html" %}
+{% load  staticfiles %}
+{% block content %}
+		{% for movie in movies %}
+    <div class="box">
+			<div style="font-size:17px;">
+				{{movie.date.year}}/{{movie.date.month}}/{{movie.date.day}}
+			</div>
+			<div>
+				{% if user.is_authenticated %}
+					{% if movie  in  user_movies %}
+						<h5>Added to your list</h5>
+						{% else %}
+							<a href="{% url 'add_to_list' pk=movie.id %}">Add this movie </a>
+					{% endif %}
+					{% else %}
+					<p> </p>
+				{% endif %}
+			</div>
+      <a href="" class="image fit"><img src="{{movie.poster.url}}" style=" height: 500px;" alt="" /></a>
+      <div class="{{movie.name}}" style="font-size: 25px; font-family: 'Anton', sans-serif; "></div>
+      <script type="text/javascript">
+      $('.{{movie.name}}').countdown('{{movie.date.year}}/{{movie.date.month}}/{{movie.date.day}}', function(event) {
+        var $this = $(this).html(event.strftime(''
+          + '<span>%m</span>&ensp;&ensp;&ensp;'
+          + '<span>%n</span>&ensp;&ensp;&ensp;'
+          + '<span>%H</span>&ensp;&ensp;&ensp;'
+          + '<span>%M</span>&ensp;&ensp;&ensp;'
+          + '<span>%S</span>'));
+            });
+      </script>
+      <div style="font-size:13px;">
+      &ensp; Month&ensp;&ensp;&ensp;&ensp;&ensp;Day&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; Hour&ensp;&ensp;&ensp;&ensp;&ensp; Minute&ensp;&ensp;&ensp;&ensp; Second
+      </div>
+
+    </div>
+
+
+    {% endfor %}
+
+  </div>
+
+
+
+
+	</section>
+
+
+
+
+{% endblock %}
