@@ -26,9 +26,9 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = '5=i%$lb*tw_%lsbhb4@+f&0#owxzq48+tghafex9%)0!*sd#@6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['releasedate-today.herokuapp.com']
 
 
 INSTALLED_APPS = [
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'whitenoise.storage.CompressedManifestStaticFilesStorage',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
      'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
