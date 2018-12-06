@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import django_heroku
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -47,6 +51,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -81,12 +86,12 @@ WSGI_APPLICATION = 'release_date.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NAME': 'release_date',
-        'ENGINE':'django.db.backends.mysql',
-        'USER': 'root',
+        'NAME': 'releasedate',
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'USER': 'myuser',
         'PASSWORD':'demon',
         'HOST': 'localhost',
-        'PORT': '3306',
+        'PORT': '',
     }
 }
 
@@ -124,6 +129,7 @@ USE_L10N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
