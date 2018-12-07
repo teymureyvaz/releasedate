@@ -24,7 +24,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = '5=i%$lb*tw_%lsbhb4@+f&0#owxzq48+tghafex9%)0!*sd#@6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['releasedate-today.herokuapp.com']
 
@@ -94,7 +94,7 @@ DATABASES = {
     }
 }
 
-INTERNAL_IPS=('127.0.0.1')
+
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
